@@ -1,0 +1,1 @@
+ESPRESSO,CAN1 Hot Water,0,5000,0,0,CAN1 Feed Motor,500,4000,0,0,CAN1 Spin Motor,0,5000,0,0,CAN2 Hot Water,0,5000,0,0,CAN2 Feed Motor,0,0,0,0,CAN2 Spin Motor,0,0,0,0,CAN3 Hot Water,0,0,0,0,CAN3 Feed Motor,0,0,0,0,CAN3 Spin Motor,0,0,0,0,Ex. Steam,0,0,0,0,Ex. Milk,0,0,0,0,Hot Water,0,0,0,0 
