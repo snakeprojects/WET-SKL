@@ -14,7 +14,7 @@
 			<input id='item_button' style='width:65px;text-align:center;' type='submit' name='cmd_save' value='Save' placeholder=''formaction='/saveConfig' />
 		</div>
 		<div id='footer'>
-			<input id='item_button' style='width:65px;text-align:center;' type='button' name='cmd_submit2' value='Post' onclick='sD(99)'/>
+			<input id='item_button' style='width:65px;text-align:center;' type='button' name='cmd_submit2' value='Post' onclick='fD(99)'/>
 			<input id='item_button' style='width:65px;text-align:center;' type='submit' name='cmd_submit4' value='Network' formaction='network'/>
 			<input id='item_button' style='width:65px;text-align:center;' type='submit' name='cmd_submit1' value='Logout' formaction='logout'/>
 		</div>
