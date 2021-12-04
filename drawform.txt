@@ -162,7 +162,7 @@
 	function fD(cx)
 		{
 		var zz = 'b'+current_item;
-		cmd_name='fill';
+		if(cx==99){cmd_name=save;cx=current_item;}else{cmd_name='fill';}
 		document.getElementById(zz).style = 'background-color:lightgrey;';
 		zz = 'b'+cx;
 		document.getElementById(zz).style = 'background-color:tan;';
