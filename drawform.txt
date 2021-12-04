@@ -139,7 +139,7 @@
 		xhttp.open('POST', 'postData');
 		xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 		var cnt=0;
-		if(cx==99)  cmd_name='save';
+		
 		var sendData= 'Cmd_Name=';
 		sendData+=cmd_name;
 		sendData+='&ItemNo=';
@@ -162,8 +162,8 @@
 	function fD(cx)
 		{
 		var zz = 'b'+current_item;
-		if(cx=='99')
-		{cmd_name=save;
+		if(cx==99)
+		{cmd_name='save';
 		cx=current_item;}
 		else
 		{cmd_name='fill';}
