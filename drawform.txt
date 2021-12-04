@@ -1,0 +1,148 @@
+<body>
+	<form action='wificonfig' method='POST'>
+	<div id='container'>
+		<div id='header'><h1>Vending Machine</h1></div>
+		<div id='item-select'></div>
+		<div id='tablespace'>
+			<input id='' type='hidden' name='txtPage' value='Settings' placeholder=''/>
+			<div id='tables'></div>
+		</div>
+		<div id='command_line'>
+			<input id='item_button' style='width:65px;text-align:center;' type='submit' name='cmd_test' value='Test' placeholder=''formaction='/testConfig' />
+			<input id='item_button' style='width:65px;text-align:center;' type='submit' name='cmd_default' value='Default' placeholder=''formaction='/defaultConfig' />
+			<input id='item_button' style='width:65px;text-align:center;' type='submit' name='cmd_cancel' value='Cancel' placeholder=''formaction='/cancelConfig' />
+			<input id='item_button' style='width:65px;text-align:center;' type='submit' name='cmd_save' value='Save' placeholder=''formaction='/saveConfig' />
+		</div>
+		<div id='footer'>
+			<input id='item_button' style='width:65px;text-align:center;' type='button' name='cmd_submit2' value='Post' onclick='sD(99)'/>
+			<input id='item_button' style='width:65px;text-align:center;' type='submit' name='cmd_submit4' value='Network' formaction='network'/>
+			<input id='item_button' style='width:65px;text-align:center;' type='submit' name='cmd_submit1' value='Logout' formaction='logout'/>
+		</div>
+	</div>
+<script>
+	var current_item=2;
+	var cmd_name = 'fill';
+	draw_form();
+	fD(current_item);
+
+	function draw_form()
+		{
+		var cnt=0;
+		while(cnt<10)
+			{
+			var yy='a'+cnt;
+			var zz='fD('+cnt+')';
+			var xx='b'+cnt;
+			var b=document.createElement('INPUT');
+			b.setAttribute('type','button');
+			b.setAttribute('id',xx);
+			b.setAttribute('class','tbl_value');
+			if(cnt==current_item)
+				{
+				b.setAttribute('style','background-color:tan;');
+				}
+			b.setAttribute('value',cnt+1);
+			b.setAttribute('onclick',zz);
+			document.getElementById('item-select').appendChild(b);cnt++;
+			}
+		cnt=0;
+		t=document.createElement('INPUT');
+		t.setAttribute('type','text');
+		t.setAttribute('id','t0');
+		t.setAttribute('class','item_caption');
+		t.setAttribute('style','width:150px;font-size:15px;text-align:center;margin:10px 5px 5px 85px');
+		document.getElementById('item-select').appendChild(t);
+		cnt++;
+		var CR;
+		var yy;
+		var cnt2=0,sr_no=1;
+		while(sr_no<=12)
+			{
+			t=document.createElement('INPUT');
+			t.setAttribute('type','text');
+			t.setAttribute('id','item_value');
+			t.setAttribute('value',sr_no);
+			t.setAttribute('disabled','true');
+			t.setAttribute('style','width:12px;text-align:right;');
+			document.getElementById('tables').appendChild(t);
+			sr_no++;
+			cnt2=0;
+			while(cnt2<5)
+				{
+				yy='t'+cnt;t=document.createElement('INPUT');
+				t.setAttribute('type','text');
+				t.setAttribute('class','tbl_value');
+				t.setAttribute('id',yy);
+				if(cnt2==0)
+					{
+					t.setAttribute('style','width:105px;text-align:left;');
+					t.setAttribute('disabled','true');
+					}
+				else
+					{
+					}
+				t.setAttribute('value',cnt);
+				document.getElementById('tables').appendChild(t);
+				cnt++;
+				cnt2++;
+				}
+			CR=document.createElement('BR');
+			document.getElementById('tables').appendChild(CR);
+			}
+		}
+
+	function sD(cx)
+		{
+		const xhttp=new XMLHttpRequest();
+		xhttp.onload=function()
+			{
+			var VArr;
+				var response=this.responseText;
+			if((cmd_name=='fill')||(cmd_name=='cancel')||(cmd_name=='default'))
+				{
+				VArr = response.split(',');
+				while(cnt<61)
+					{
+					var yy = 't' + cnt;
+					document.getElementById(yy).value = VArr[cnt];
+					cnt++;
+					}
+				}
+				}
+		xhttp.open('POST', 'postData');
+		xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+		var cnt=0;
+		if(cx==99)  cmd_name='save';
+		var sendData= 'Cmd_Name=';
+		sendData+=cmd_name;
+		sendData+='&ItemNo=';
+		sendData+=cx;
+		sendData+='&ItemData=';
+		if(cmd_name=='save')
+			{
+			while(cnt<61)
+				{
+				var yy='t'+cnt;
+				sendData+=document.getElementById(yy).value;
+				if(cnt<60)	sendData+=',';
+				cnt++;
+				}
+			}
+		xhttp.send(sendData);
+		}
+	
+	function fD(cx)
+		{
+		var zz = 'b'+current_item;
+		cmd_name='fill';
+		document.getElementById(zz).style = 'background-color:lightgrey;';
+		zz = 'b'+cx;
+		document.getElementById(zz).style = 'background-color:tan;';
+		current_item = cx;
+		sD(cx);
+		}
+	
+	</script>
+</form>
+</body>
+</html>
