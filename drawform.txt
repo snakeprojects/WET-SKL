@@ -90,7 +90,34 @@
 			document.getElementById('tables').appendChild(CR);
 			}
 		}
-
+	function rD(cx)
+		{
+		var xhttp=new XMLHttpRequest();
+		var cnt=0;
+		var Values='';
+		var VArr=[];
+		var bx='b'+current_item;
+		var ax='b'+cx;
+		var gD='getData'+cx;
+		current_item=cx;
+		document.getElementById(ax).style='background-color:tan;';
+		document.getElementById(bx).style='background-color:lightgrey;';
+		xhttp.onreadystatechange=function()
+			{
+			if (this.readyState==4 && this.status==200)
+				{
+				Values=this.responseText;
+				VArr=Values.split(',');
+				while(cnt<61)
+					{
+					var yy='t'+cnt;
+					document.getElementById(yy).value=VArr[cnt];
+					cnt++;
+					}
+				}
+			}
+		xhttp.open('GET', gD, true);xhttp.send();
+		}
 	function sD(cx)
 		{
 		const xhttp=new XMLHttpRequest();
@@ -108,7 +135,7 @@
 					cnt++;
 					}
 				}
-				}
+			}
 		xhttp.open('POST', 'postData');
 		xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 		var cnt=0;
@@ -127,6 +154,7 @@
 				if(cnt<60)	sendData+=',';
 				cnt++;
 				}
+			
 			}
 		xhttp.send(sendData);
 		}
