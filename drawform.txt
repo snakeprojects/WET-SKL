@@ -273,7 +273,7 @@ background-color:lightgrey;
 			{
 			while(cnt<49)
 				{
-				var yy='t'+cnt;
+				var yy='dv'+cnt;
 				sendData+=document.getElementById(yy).value;
 				sendData+=',';
 				cnt++;
