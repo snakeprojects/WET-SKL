@@ -152,7 +152,7 @@
 		else if(cx==99)
 			{cmd_name='save'; cx=current_item;}
 		else
-			{cmd_name='fill'; current = cx;}
+			{cmd_name='fill'; current_item = cx;}
 		document.getElementById(zz).style = 'background-color:lightgrey;';
 		zz = 'b'+cx;
 		document.getElementById(zz).style = 'background-color:tan;';
