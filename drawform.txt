@@ -181,7 +181,7 @@ background-color:lightgrey;
 		var table_Row=0;
 		var table_Col=0;
 		var ind=0;
-			add_Textbox(ind,'t','item_caption','width:150px;font-size:15px;text-align:center;margin:10px 5px 5px 5px','0','item-select');
+			add_Textbox(ind,'dv','item_caption','width:150px;font-size:15px;text-align:center;margin:10px 5px 5px 5px','0','item-select');
 			add_Button(98,'b','width:70px;','item-select');
 			add_Button(99,'b','width:70px;','item-select');
 			ind++;
@@ -194,7 +194,7 @@ background-color:lightgrey;
 			table_Col=0;
 			while(table_Col<4)
 				{
-				add_Textbox(ind,'t','data_val','width:32px;text-align:right;',ind,'tables');
+				add_Textbox(ind,'dv','data_val','width:32px;text-align:right;',ind,'tables');
 				table_Col ++;
 				ind++;
 				}
@@ -254,7 +254,7 @@ background-color:lightgrey;
 				VArr = response.split(',');
 				while(cnt<49)
 					{
-					var yy = 't' + cnt;
+					var yy = 'dv' + cnt;
 					document.getElementById(yy).value = VArr[cnt];
 					cnt++;
 					}
