@@ -192,9 +192,11 @@ background-color:lightgrey;
 			add_Textbox(table_Row,'rn','row_no','width:15px;text-align:right;background-color:lightgreen;',table_Row+1,'tables');
 			add_Textbox(table_Row,'rc','row_cap','width:105px;text-align:left;background-color:lightgreen;','','tables');
 			table_Col=0;
+			var xz="";
 			while(table_Col<4)
 				{
-				add_Textbox(ind,'dv','data_val','width:32px;text-align:right;',ind,'tables');
+				xz='t'+ind;
+				add_Textbox(ind,xz,'data_val','width:32px;text-align:right;',ind,'tables');
 				table_Col ++;
 				ind++;
 				}
