@@ -52,7 +52,7 @@
 			ind++;
 
 		count=0;
-		if(captions[0]=='']) total_Rows=12;
+		if(captions[0]=='') total_Rows=12;
 		while(TR<total_Rows)
 			{
 			add_Textbox(TR,'rn','row_no','width:15px;text-align:right;background-color:lightgreen;',TR+1,'tables');
