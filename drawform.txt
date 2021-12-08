@@ -1,3 +1,4 @@
+
 <body>
 <script>
 	sty();
@@ -26,9 +27,10 @@
 		<div id='footer'>		</div>
 	</div>
 <script>
-
+	var total_Rows=0;
 	var current_item=2;
 	var cmd_name = 'fill';
+	get_captions();
 	draw_form();
 	fD(current_item);
 	function draw_form()
@@ -39,8 +41,8 @@
 			add_Button(count,'b','text-align:center','','item-select','');
 			count++;
 			}
-		var table_Row=0;
-		var table_Col=0;
+		var TR=0;
+		var TC=0;
 		var ind=0;
 			add_Textbox(ind,'t','item_caption','width:150px;font-size:15px;text-align:center;margin:10px 5px 5px 5px','0','item-select');
 			add_Button(98,'b','width:70px;','Test','item-select','');
@@ -48,25 +50,42 @@
 			ind++;
 
 		count=0;
-		while(table_Row<12)
+		while(TR<12)
 			{
-			add_Textbox(table_Row,'rn','row_no','width:15px;text-align:right;background-color:lightgreen;',table_Row+1,'tables');
-			add_Textbox(table_Row,'rc','row_cap','width:105px;text-align:left;background-color:lightgreen;','','tables');
-			table_Col=0;
-			while(table_Col<4)
+			add_Textbox(TR,'rn','row_no','width:15px;text-align:right;background-color:lightgreen;',TR+1,'tables');
+			add_Textbox(TR,'rc','row_cap','width:105px;text-align:left;background-color:lightgreen;','','tables');
+			TC=0;
+			while(TC<4)
 				{
 				add_Textbox(ind,'t','data_val','width:32px;text-align:right;',ind,'tables');
-				table_Col ++;
+				TC ++;
 				ind++;
 				}
-			table_Row++;
+			TR++;
 			CR=document.createElement('BR');
 			document.getElementById('tables').appendChild(CR);
 			}
 		count=11;
 		add_Button(count,'b','width:70px;','Status','command_line','status');
+		}
 		
-		
+	function get_captions()
+		{
+		const xhttp=new XMLHttpRequest();
+		xhttp.onload=function()
+			{
+			var VArr;
+			var response=this.responseText;
+			VArr = response.split(',');
+			}
+		total_Rows = VArr[0];
+		var TR=0;
+		while(TR<total_Rows)
+			{
+			var yy = 't' + TR;
+			TR++;
+			document.getElementById(yy).value = VArr[TR];
+			}
 		}
 
 	function add_Textbox(cnt,id_prefix,class_id,ex_sty,txtval,region)
@@ -120,7 +139,7 @@
 		xhttp.onload=function()
 			{
 			var VArr;
-				var response=this.responseText;
+			var response=this.responseText;
 			if((cmd_name=='fill')||(cmd_name=='cancel')||(cmd_name=='default'))
 				{
 				VArr = response.split(',');
