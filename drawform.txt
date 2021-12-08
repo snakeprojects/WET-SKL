@@ -28,10 +28,12 @@
 	</div>
 <script>
 	var total_Rows=0;
+	var captions = [total_Rows];
 	var current_item=2;
 	var cmd_name = 'fill';
 	get_captions();
 	draw_form();
+
 	fD(current_item);
 	function draw_form()
 		{
@@ -50,10 +52,10 @@
 			ind++;
 
 		count=0;
-		while(TR<12)
+		while(TR<total_Rows)
 			{
 			add_Textbox(TR,'rn','row_no','width:15px;text-align:right;background-color:lightgreen;',TR+1,'tables');
-			add_Textbox(TR,'rc','row_cap','width:105px;text-align:left;background-color:lightgreen;','','tables');
+			add_Textbox(TR,'rc','row_cap','width:105px;text-align:left;background-color:lightgreen;',captions[TR],'tables');
 			TC=0;
 			while(TC<4)
 				{
@@ -82,10 +84,17 @@
 		var TR=0;
 		while(TR<total_Rows)
 			{
-			var yy = 't' + TR;
+			var CR =  TR;
 			TR++;
-			document.getElementById(yy).value = VArr[TR];
+			captions[CR] = VArr[TR];
 			}
+		var sendData= 'Cmd_Name=';
+		sendData+='getcaptions;
+		sendData+='&ItemNo=';
+		sendData+='x';
+		sendData+='&ItemData=';
+		sendData+='x';
+		xhttp.send(sendData);
 		}
 
 	function add_Textbox(cnt,id_prefix,class_id,ex_sty,txtval,region)
