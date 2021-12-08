@@ -86,7 +86,7 @@
 			captions[CR] = VArr[TR];
 			}
 		var sendData= 'Cmd_Name=';
-		sendData+='getcaptions;
+		sendData+='getcaptions';
 		sendData+='&ItemNo=';
 		sendData+='x';
 		sendData+='&ItemData=';
