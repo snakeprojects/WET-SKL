@@ -1,22 +1,5 @@
 
 <body>
-<script>
-	sty();
-	function sty()
-		{
-		add_Style('#item_button{width:69px;text-align:center;}');
-		add_Style('#command_line{width:324px;height:25px;padding:3px;margin:5px;float-left;border:1px solid white;}');
-		}
-		
-	function add_Style(styString)
-		{
-		var st = document.createElement('STYLE');
-		t = document.createTextNode(styString);
-		st.appendChild(t);
-		document.head.appendChild(st);
-		}
-</script>
-
 	<form action='wificonfig' method='POST'>
 	<input id='' type='hidden' name='txtPage' value='Settings' placeholder=''/>
 	<div id='container'>
@@ -32,6 +15,21 @@
 	var current_item=2;
 	var cmd_name = 'fill';
 	get_captions();
+	sty();
+	function sty()
+		{
+		add_Style('#item_button{width:69px;text-align:center;}');
+		add_Style('#command_line{width:324px;height:25px;padding:3px;margin:5px;float-left;border:1px solid white;}');
+		}
+		
+	function add_Style(styString)
+		{
+		var st = document.createElement('STYLE');
+		t = document.createTextNode(styString);
+		st.appendChild(t);
+		document.head.appendChild(st);
+		}
+		
 	draw_form();
 
 	fD(current_item);
