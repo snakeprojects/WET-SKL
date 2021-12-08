@@ -27,8 +27,9 @@
 	</div>
 <script>
 
-	var current_item=2;
+	var current_item=0;
 	var cmd_name = 'fill';
+	var captions = ['12','CAN1 Hot Water','CAN1 Feed Motor','CAN1 Spin Motor','CAN2 Hot Water','CAN2 Feed Motor','CAN2 Spin Motor','CAN3 Hot Water','CAN3 Feed Motor','CAN3 Spin Motor','Ex. Steam','Ex. Milk','Hot Water'];
 	draw_form();
 	fD(current_item);
 	function draw_form()
@@ -51,7 +52,7 @@
 		while(table_Row<12)
 			{
 			add_Textbox(table_Row,'rn','row_no','width:15px;text-align:right;background-color:lightgreen;',table_Row+1,'tables');
-			add_Textbox(table_Row,'rc','row_cap','width:105px;text-align:left;background-color:lightgreen;','','tables');
+			add_Textbox(table_Row,'rc','row_cap','width:105px;text-align:left;background-color:lightgreen;',captions[table_Row+1],'tables');
 			table_Col=0;
 			while(table_Col<4)
 				{
@@ -63,10 +64,10 @@
 			CR=document.createElement('BR');
 			document.getElementById('tables').appendChild(CR);
 			}
-		count=11;
-		add_Button(count,'b','width:70px;','Status','command_line','status');
-		
-		
+		add_Button(1,'m','width:70px;','Status','command_line','status');
+		add_Button(2,'m','width:70px;','Settings','command_line','settings');
+		add_Button(3,'m','width:70px;','Network','command_line','network');
+		add_Button(4,'m','width:70px;','Logout','command_line','logout');
 		}
 
 	function add_Textbox(cnt,id_prefix,class_id,ex_sty,txtval,region)
