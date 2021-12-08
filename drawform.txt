@@ -27,7 +27,7 @@
 	</div>
 <script>
 	var total_Rows=0;
-	var captions = [total_Rows];
+	var captions=['12','CAN1 Hot Water','CAN1 Feed Motor','CAN1 Spin Motor','CAN2 Hot Water','CAN2 Feed Motor','CAN2 Spin Motor','CAN3 Hot Water','CAN3 Feed Motor','CAN3 Spin Motor','Ex. Steam,''Ex. Milk','Hot Water'];
 	var current_item=2;
 	var cmd_name = 'fill';
 	sty();
@@ -52,7 +52,7 @@
 			ind++;
 
 		count=0;
-		if(captions[0]=='') total_Rows=12;
+		total_Rows=12;
 		while(TR<total_Rows)
 			{
 			add_Textbox(TR,'rn','row_no','width:15px;text-align:right;background-color:lightgreen;',TR+1,'tables');
@@ -74,14 +74,13 @@
 		
 	function get_captions()
 		{
-		var VArr;
 		const xhttp=new XMLHttpRequest();
 		xhttp.onload=function()
 			{
 			var response=this.responseText;
-			VArr = response.split(',');
+			captions = response.split(',');
 			}
-		total_Rows = VArr[0];
+		total_Rows = captions[0];
 		var TR=1;
 		while(TR<total_Rows)
 			{
