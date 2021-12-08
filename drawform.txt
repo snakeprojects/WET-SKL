@@ -26,15 +26,11 @@
 		<div id='footer'>		</div>
 	</div>
 <script>
-	var total_Rows=0;
-	var captions=['12','CAN1 Hot Water','CAN1 Feed Motor','CAN1 Spin Motor','CAN2 Hot Water','CAN2 Feed Motor','CAN2 Spin Motor','CAN3 Hot Water','CAN3 Feed Motor','CAN3 Spin Motor','Ex. Steam,''Ex. Milk','Hot Water'];
+
 	var current_item=2;
 	var cmd_name = 'fill';
-	sty();
-	get_captions();
 	draw_form();
 	fD(current_item);
-	
 	function draw_form()
 		{
 		var count=0;
@@ -43,8 +39,8 @@
 			add_Button(count,'b','text-align:center','','item-select','');
 			count++;
 			}
-		var TR=0;
-		var TC=0;
+		var table_Row=0;
+		var table_Col=0;
 		var ind=0;
 			add_Textbox(ind,'t','item_caption','width:150px;font-size:15px;text-align:center;margin:10px 5px 5px 5px','0','item-select');
 			add_Button(98,'b','width:70px;','Test','item-select','');
@@ -52,51 +48,25 @@
 			ind++;
 
 		count=0;
-		total_Rows=12;
-		while(TR<total_Rows)
+		while(table_Row<12)
 			{
-			add_Textbox(TR,'rn','row_no','width:15px;text-align:right;background-color:lightgreen;',TR+1,'tables');
-			add_Textbox(TR,'rc','row_cap','width:105px;text-align:left;background-color:lightgreen;',captions[TR],'tables');
-			TC=0;
-			while(TC<4)
+			add_Textbox(table_Row,'rn','row_no','width:15px;text-align:right;background-color:lightgreen;',table_Row+1,'tables');
+			add_Textbox(table_Row,'rc','row_cap','width:105px;text-align:left;background-color:lightgreen;','','tables');
+			table_Col=0;
+			while(table_Col<4)
 				{
 				add_Textbox(ind,'t','data_val','width:32px;text-align:right;',ind,'tables');
-				TC ++;
+				table_Col ++;
 				ind++;
 				}
-			TR++;
+			table_Row++;
 			CR=document.createElement('BR');
 			document.getElementById('tables').appendChild(CR);
 			}
 		count=11;
 		add_Button(count,'b','width:70px;','Status','command_line','status');
-		}
 		
-	function get_captions()
-		{
-		const xhttp=new XMLHttpRequest();
-		xhttp.onload=function()
-			{
-			var response=this.responseText;
-			captions = response.split(',');
-			}
-		total_Rows = captions[0];
-		var TR=1;
-		while(TR<total_Rows)
-			{
-			var CR =  TR;
-			TR++;
-			captions[CR] = VArr[TR];
-			}
-		xhttp.open('POST', 'postData');
-		xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-		var sendData= 'Cmd_Name=';
-		sendData+='getcaptions';
-		sendData+='&ItemNo=';
-		sendData+='x';
-		sendData+='&ItemData=';
-		sendData+='x';
-		xhttp.send(sendData);
+		
 		}
 
 	function add_Textbox(cnt,id_prefix,class_id,ex_sty,txtval,region)
@@ -150,7 +120,7 @@
 		xhttp.onload=function()
 			{
 			var VArr;
-			var response=this.responseText;
+				var response=this.responseText;
 			if((cmd_name=='fill')||(cmd_name=='cancel')||(cmd_name=='default'))
 				{
 				VArr = response.split(',');
@@ -165,6 +135,7 @@
 		xhttp.open('POST', 'postData');
 		xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 		var cnt=0;
+		
 		var sendData= 'Cmd_Name=';
 		sendData+=cmd_name;
 		sendData+='&ItemNo=';
