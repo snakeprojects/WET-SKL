@@ -16,6 +16,9 @@
 	var cmd_name = 'fill';
 	get_captions();
 	sty();
+	draw_form();
+	fD(current_item);
+
 	function sty()
 		{
 		add_Style('#item_button{width:69px;text-align:center;}');
@@ -29,10 +32,6 @@
 		st.appendChild(t);
 		document.head.appendChild(st);
 		}
-		
-	draw_form();
-
-	fD(current_item);
 	function draw_form()
 		{
 		var count=0;
