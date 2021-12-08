@@ -1,24 +1,6 @@
-
 <body>
-	<form action='wificonfig' method='POST'>
-	<input id='' type='hidden' name='txtPage' value='Settings' placeholder=''/>
-	<div id='container'>
-		<div id='header'><h1>Vending Machine</h1></div>
-		<div id='item-select'>	</div>
-		<div id='tablespace'>	<div id='tables'></div>	</div>
-		<div id='command_line'>	</div>
-		<div id='footer'>		</div>
-	</div>
 <script>
-	var total_Rows=12;
-	var captions = [total_Rows];
-	var current_item=2;
-	var cmd_name = 'fill';
 	sty();
-	draw_form();
-	fD(current_item);
-	get_captions();
-
 	function sty()
 		{
 		add_Style('#item_button{width:69px;text-align:center;}');
@@ -32,6 +14,27 @@
 		st.appendChild(t);
 		document.head.appendChild(st);
 		}
+</script>
+
+	<form action='wificonfig' method='POST'>
+	<input id='' type='hidden' name='txtPage' value='Settings' placeholder=''/>
+	<div id='container'>
+		<div id='header'><h1>Vending Machine</h1></div>
+		<div id='item-select'>	</div>
+		<div id='tablespace'>	<div id='tables'></div>	</div>
+		<div id='command_line'>	</div>
+		<div id='footer'>		</div>
+	</div>
+<script>
+	var total_Rows=0;
+	var captions = [total_Rows];
+	var current_item=2;
+	var cmd_name = 'fill';
+	sty();
+	get_captions();
+	draw_form();
+	fD(current_item);
+	
 	function draw_form()
 		{
 		var count=0;
@@ -70,21 +73,23 @@
 		
 	function get_captions()
 		{
+		var VArr=[];
 		const xhttp=new XMLHttpRequest();
 		xhttp.onload=function()
 			{
-			var VArr=[];
 			var response=this.responseText;
 			VArr = response.split(',');
 			}
 		total_Rows = VArr[0];
-		var TR=0;
+		var TR=1;
 		while(TR<total_Rows)
 			{
 			var CR =  TR;
 			TR++;
 			captions[CR] = VArr[TR];
 			}
+		xhttp.open('POST', 'postData');
+		xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 		var sendData= 'Cmd_Name=';
 		sendData+='getcaptions';
 		sendData+='&ItemNo=';
@@ -160,7 +165,6 @@
 		xhttp.open('POST', 'postData');
 		xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 		var cnt=0;
-		
 		var sendData= 'Cmd_Name=';
 		sendData+=cmd_name;
 		sendData+='&ItemNo=';
