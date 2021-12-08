@@ -10,14 +10,14 @@
 		<div id='footer'>		</div>
 	</div>
 <script>
-	var total_Rows=0;
+	var total_Rows=12;
 	var captions = [total_Rows];
 	var current_item=2;
 	var cmd_name = 'fill';
-	get_captions();
 	sty();
 	draw_form();
 	fD(current_item);
+	get_captions();
 
 	function sty()
 		{
@@ -73,7 +73,7 @@
 		const xhttp=new XMLHttpRequest();
 		xhttp.onload=function()
 			{
-			var VArr;
+			var VArr=[];
 			var response=this.responseText;
 			VArr = response.split(',');
 			}
