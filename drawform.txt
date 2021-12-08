@@ -122,7 +122,7 @@
 			{
 			var VArr;
 				var response=this.responseText;
-			if((cmd_name=='fill')||(cmd_name=='cancel')||(cmd_name=='default'))
+			if(cmd_name=='fill')
 				{
 				VArr = response.split(',');
 				while(cnt<49)
@@ -142,7 +142,7 @@
 		sendData+='&ItemNo=';
 		sendData+=cx;
 		sendData+='&ItemData=';
-		if(cmd_name=='save')
+		if((cmd_name=='save')||(cmd_name=='test'))
 			{
 			while(cnt<49)
 				{
@@ -151,7 +151,6 @@
 				sendData+=',';
 				cnt++;
 				}
-			
 			}
 		xhttp.send(sendData);
 		}
