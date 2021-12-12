@@ -3,7 +3,7 @@
 	sty();
 	function sty()
 		{
-		add_Style('#item_button{width:69px;text-align:center;}');
+		add_Style('#item_button{width:79px;text-align:center;}');
 		add_Style('#command_line{width:324px;height:25px;padding:3px;margin:5px;float-left;border:1px solid white;}');
 		}
 		
@@ -21,21 +21,22 @@
 	<div id='container'>
 		<div id='header'><h1>Vending Machine</h1></div>
 		<div id='item-select'>	</div>
-		<div id='tablespace'>	<div id='tables'></div>	</div>
 		<div id='command_line'>	</div>
+		<div id='tablespace'>	<div id='tables'></div>	</div>
 		<div id='footer'>		</div>
 	</div>
 <script>
 
 	var current_item=0;
 	var cmd_name = 'fill';
-	var captions = ['12','CAN1 Hot Water','CAN1 Feed Motor','CAN1 Spin Motor','CAN2 Hot Water','CAN2 Feed Motor','CAN2 Spin Motor','CAN3 Hot Water','CAN3 Feed Motor','CAN3 Spin Motor','Ex. Steam','Ex. Milk','Hot Water'];
+	var captions = ['12','CAN1 Hot Water','CAN1 Feed Motor','CAN1 Spin Motor','CAN2 Hot Water','CAN2 Feed Motor','CAN2 Spin Motor','CAN3 Hot Water','CAN3 Feed Motor','CAN3 Spin Motor','','',''];
 	draw_form();
 	fD(current_item);
+	
 	function draw_form()
 		{
 		var count=0;
-		while(count<10)
+		while(count<8)
 			{
 			add_Button(count,'b','text-align:center','','item-select','');
 			count++;
@@ -43,16 +44,15 @@
 		var table_Row=0;
 		var table_Col=0;
 		var ind=0;
-			add_Textbox(ind,'t','item_caption','width:150px;font-size:15px;text-align:center;margin:10px 5px 5px 5px','0','item-select');
-			add_Button(98,'b','width:70px;','Test','item-select','');
-			add_Button(99,'b','width:70px;','Save','item-select','');
+			add_Textbox(ind,'t','item_caption','width:150px;font-size:15px;text-align:center;margin:1px 5px 5px 45px','0','command_line');
+			add_Button(99,'b','width:70px;','Save','command_line','');
 			ind++;
 
 		count=0;
 		while(table_Row<12)
 			{
-			add_Textbox(table_Row,'rn','row_no','width:15px;text-align:right;background-color:lightgreen;',table_Row+1,'tables');
-			add_Textbox(table_Row,'rc','row_cap','width:105px;text-align:left;background-color:lightgreen;',captions[table_Row+1],'tables');
+			add_Textbox(table_Row,'rn','row_no','width:15px;text-align:right;background-color:PaleGoldenRod;',table_Row+1,'tables');
+			add_Textbox(table_Row,'rc','row_cap','width:105px;text-align:left;background-color:PaleGoldenRod;',captions[table_Row+1],'tables');
 			table_Col=0;
 			while(table_Col<4)
 				{
@@ -64,10 +64,10 @@
 			CR=document.createElement('BR');
 			document.getElementById('tables').appendChild(CR);
 			}
-		add_Button(1,'m','width:70px;','Status','command_line','status');
-		add_Button(2,'m','width:70px;','Settings','command_line','settings');
-		add_Button(3,'m','width:70px;','Network','command_line','network');
-		add_Button(4,'m','width:70px;','Logout','command_line','logout');
+		add_Button(1,'m','width:70px;','Status','footer','status');
+		add_Button(2,'m','width:70px;','Settings','footer','settings');
+		add_Button(3,'m','width:70px;','Network','footer','network');
+		add_Button(4,'m','width:70px;','Logout','footer','logout');
 		}
 
 	function add_Textbox(cnt,id_prefix,class_id,ex_sty,txtval,region)
