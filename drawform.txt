@@ -1,0 +1,58 @@
+<body><form action='wificonfig' method='POST'><input id='' type='hidden' name='txtPage' value='Settings' placeholder=''/><div id='container'><div id='header'><h1>Vending Machine</h1></div><div id='nav_bar'></div><div id='tablespace'> <div id='tables'></div> </div><div id='item-select'> </div><div id='footer'></div></div><script>const ITEMS=8;var cItem=0;var cmd_name = 'fill';var captions = ['12','CAN1 Hot Water','CAN1 Feed Motor','CAN1 Spin Motor','CAN2 Hot Water','CAN2 Feed Motor','CAN2 Spin Motor','CAN3 Hot Water','CAN3 Feed Motor','CAN3 Spin Motor','Fresh Milk','',''];draw_form();fD(cItem);function add_Br(){CR=document.createElement('BR');document.getElementById('tables').appendChild(CR);}function draw_form(){var cnt=0;while(cnt<ITEMS){add_Tb(cnt,'b','btu','width:33px;',cnt+1,'item-select','b','','');cnt++;if(cnt==8)add_Br();}cnt=0;add_Tb(cnt,'t','','width:150px;font-weight:bold;font-size:15px;text-align:center;margin:1px 5px 5px 3px','item_caption','nav_bar','','','');add_Tb(99,'b','btu','width:70px;','Save','nav_bar','b','','');cnt++;var t_R=0;while(t_R<12){add_Tb(t_R,'rn','r_cap','margin:0px;width:15px;text-align:right;background-color:PaleGoldenRod;',t_R+1,'tables','','','');add_Tb(t_R,'rc','r_cap','margin:0px;width:110px;text-align:left;background-color:PaleGoldenRod;',captions[t_R+1],'tables','','','');var t_C=0;while(t_C<4){add_Tb(cnt,'t','r_val','margin:0px;width:32px;text-align:right;',cnt,'tables','','','');t_C ++;cnt++;}add_Br();t_R++;}add_Tb(2,'m','btu','width:70px;','Settings','footer','b','','settings');add_Tb(3,'m','btu','width:70px;','Network','footer','b','','network');add_Tb(4,'m','btu','width:70px;','Logout','footer','b','','logout');}function add_Tb(cnt,id_prefix,class_id,ex_sty,txtval,region,pass,myFun,f_action){if(cnt<100) id_prefix+=cnt;var t=document.createElement('INPUT');if(f_action){t.setAttribute('type','submit');t.setAttribute('formaction',f_action);}else{var clickfun='fD('+cnt+')';t.setAttribute('type','button');t.setAttribute('onclick',clickfun);}if(pass=='*')t.setAttribute('type','password');else if(pass=='c')t.setAttribute('type','checkbox');else if(pass=='b')t.setAttribute('type','button');else if(pass=='s')t.setAttribute('type','submit');else t.setAttribute('type','text');t.setAttribute('id',id_prefix);if(class_id)t.setAttribute('class',class_id);if(id_prefix=='rc'){t.setAttribute('readonly','true');}if(txtval)t.setAttribute('value',txtval);if(ex_sty)t.setAttribute('style',ex_sty);if(myFun)t.setAttribute('onclick',myFun);document.getElementById(region).appendChild(t);}
+function sD(cx)
+{
+const xhttp=new XMLHttpRequest();
+xhttp.onload=function()
+{
+var VArr;
+var response=this.responseText;
+if(cmd_name=='fill')
+{
+VArr = response.split(',');
+while(cnt<49)
+{
+var yy = 't' + cnt;
+document.getElementById(yy).value = VArr[cnt];
+cnt++;
+}
+}
+}
+xhttp.open('POST', 'postData');
+xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+var cnt=0;
+var sendData= 'Cmd_Name=';
+sendData+=cmd_name;
+sendData+='&ItemNo=';
+sendData+=cx;
+sendData+='&ItemData=';
+if((cmd_name=='save')||(cmd_name=='clear'))
+{
+while(cnt<49)
+{
+var yy='t'+cnt;
+sendData+=document.getElementById(yy).value;
+sendData+=',';
+cnt++;
+}
+}
+xhttp.send(sendData);
+}
+
+function fD(cx)
+{
+if(cx==98)
+{cmd_name='clear'; cx=cItem;}
+else if(cx==99)
+{cmd_name='save'; cx=cItem;}
+else
+{cmd_name='fill'; cItem = cx;}
+var zz = 'b'+ cItem;
+document.getElementById(zz).style = 'width:33px;background-color:lightgrey;';
+zz = 'b'+ cx;
+document.getElementById(zz).style = 'width:33px;background-color:tan;';
+sD(cx);
+}
+</script>
+</form>
+</body>
+</html>
