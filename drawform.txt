@@ -98,9 +98,9 @@
 			add_Br();
 			t_R++;
 			}
-		add_Tb(2,'m','btu','width:70px;','Settings','footer','b','','settings');
-		add_Tb(3,'m','btu','width:70px;','Network','footer','b','','network');
-		add_Tb(4,'m','btu','width:70px;','Logout','footer','b','','logout');
+		add_Tb(2,'m','btu','width:70px;','Settings','footer','s','','settings');
+		add_Tb(3,'m','btu','width:70px;','Network','footer','s','','network');
+		add_Tb(4,'m','btu','width:70px;','Logout','footer','s','','logout');
 		}
 
 			
