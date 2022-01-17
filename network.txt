@@ -37,7 +37,7 @@
 					sendData+=',';
 					cnt++;
 					}
-				sendData+=document.getElementById('rt3').value;
+				sendData+=document.getElementById('rt3').checked;
 				}
 			xhttp.send(sendData);
 			}
