@@ -16,7 +16,7 @@
 						document.getElementById(yy).value = VArr[cnt];
 						cnt++;
 						}
-					document.getElementById('rt3').value = VArr[cnt];
+					document.getElementById('rt3').checked = VArr[cnt];
 					}
 				}
 			xhttp.open('POST', 'postData');
