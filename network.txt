@@ -5,4 +5,4 @@ xhttp.open('POST', 'postData');
 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 var cnt=0;var sendData='Cmd_Name=';sendData+=cmd_name;sendData+='&ItemNo=';sendData+=cx;sendData+='&ItemData=';if((cmd_name=='save')||(cmd_name=='clear')){while(cnt<49){var yy='t'+cnt;sendData+=document.getElementById(yy).value;sendData+=',';cnt++;}}
 xhttp.send(sendData);
-}function fD(vx){}</script></form></body></html>
+}function fD(cx){if(cx==95){cmd_name='connect';}else if(cx==96){cmd_name='default';}else if(cx==97){cmd_name='saveConfig';}sD(cx);}</script></form></body></html>
