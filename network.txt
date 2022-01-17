@@ -17,6 +17,7 @@
 						cnt++;
 						}
 					document.getElementById('rt3').checked = VArr[cnt];
+					dis();
 					}
 				}
 			xhttp.open('POST', 'postData');
