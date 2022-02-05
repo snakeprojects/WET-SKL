@@ -7,7 +7,7 @@
 .slidecontainer{width: 100%;}
 .slider {
   -webkit-appearance:none;
-  transform: rotate(270deg);
+  transform: rotate(90deg);
   width: 20%;
   height: 5px;
   border-radius: 5px;
