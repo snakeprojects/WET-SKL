@@ -6,7 +6,8 @@
 <style>
 .slidecontainer{width: 100%;}
 .slider {
-  -webkit-appearance: none;
+  -webkit-appearance:none;
+  transform: rotate(270deg);
   width: 20%;
   height: 5px;
   border-radius: 5px;
@@ -38,10 +39,11 @@
 </head>
 <body>
 
-<h1>Range Slider Picture</h1>
-
+<h1>FAN</h1>
+</br></br></br>
 <div class='slidecontainer'>
-  <input type='range' min='15' max='120' value='50' class='slider' id='myRange' step = '5' >
+  <input type='range' min='15' max='120' value='50'  class='slider' id='myRange' step = '5' >
+  </br></br></br></br>
   <p>Value: <span id='demo'></span></p>
 </div>
 
