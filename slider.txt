@@ -1,43 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
 <style>
-.slidecontainer {
-  width: 100%;
-}
-
+.slidecontainer{width: 100%;}
 .slider {
   -webkit-appearance: none;
-  width: 100%;
-  height: 10px;
+  width: 20%;
+  height: 5px;
   border-radius: 5px;
-  background: #d3d3d3;
+  border:2px solid black;
+  background: tan;
   outline: none;
   opacity: 0.7;
   -webkit-transition: .2s;
   transition: opacity .2s;
 }
 
-.slider:hover {
-  opacity: 1;
-}
-
+.slider:hover{opacity: 20;}
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 23px;
+  width: 8px;
   height: 24px;
-  border: 0;
-  background: url('contrasticon.png');
+  border: 2px solid green;
   cursor: pointer;
 }
-
 .slider::-moz-range-thumb {
-  width: 23px;
+  width: 8px;
   height: 24px;
-  border: 0;
-  background: url('contrasticon.png');
+  border: 2px solid red;
+  background-color:white;
   cursor: pointer;
 }
 </style>
@@ -46,14 +40,14 @@
 
 <h1>Range Slider Picture</h1>
 
-<div class="slidecontainer">
-  <input type="range" min="15" max="120" value="90" class="slider" id="myRange" step = "5" >
-  <p>Value: <span id="demo"></span></p>
+<div class='slidecontainer'>
+  <input type='range' min='15' max='120' value='50' class='slider' id='myRange' step = '5' >
+  <p>Value: <span id='demo'></span></p>
 </div>
 
 <script>
-var slider = document.getElementById("myRange");
-var output = document.getElementById("demo");
+var slider = document.getElementById('myRange');
+var output = document.getElementById('demo');
 output.innerHTML = slider.value;
 
 
@@ -70,7 +64,7 @@ function sD(cx)
 		var response=this.responseText;
 		if(cmd_name=='setSl')
 			{
-			document.getElementById("myRange").value = response;
+			document.getElementById('myRange').value = response;
 			}
 		}
 	xhttp.open('POST', 'postData');
@@ -78,9 +72,9 @@ function sD(cx)
 	var cnt=0;
 	
 	var sendData= 'Cmd_Name=';
-	sendData+="Slider";
+	sendData+='Slider';
 	sendData+='&ItemNo=';
-	sendData+="1";
+	sendData+='1';
 	sendData+='&ItemData=';
 	sendData+=cx;
 	xhttp.send(sendData);
